@@ -1,7 +1,20 @@
+from interval import Interval
+
 class Triad:
+
+    qualities = [
+        {'d' : 'm', 'm' : 'm', 'M' : 'M', 'A' : 'M'}, #Third
+        {'d' : 'm', 'm' : 'M', 'M' : 'M', 'A' : 'A'}  #Fifth
+    ]
+
     def __init__(self, root, quality):
         self.root = root
         self.quality = quality
-        #TODO: change to actually calculate them
-        self.third = 1
-        self.fifth = 1
+        self.third = Interval(root, 3, qualities[0][quality]).other
+        self.fifth = Interval(root, 5, qualities[1][quality]).other
+
+    def __str__(self):
+        return "(%s, %s, %s)" % (self.root, self.third, self.fifth)
+
+    def __repr__(self):
+        return "Triad(%s, %s)" % (root, quality)
