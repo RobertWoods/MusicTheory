@@ -4,8 +4,10 @@ class Note:
         self.accidental = accidental
 
     def __str__(self):
-        symbol = '#' if self.accidental >= 0 else 'b'
-        return self.letter + symbol * abs(self.accidental)
+        if(self.accidental >= 0):
+            return self.letter + ('x' * int(self.accidental / 2)) + ('#' * int(self.accidental % 2))
+        else:
+            return self.letter + 'b' * abs(self.accidental)
 
     def __repr__(self):
         return "Note(%s, %s)" % (self.letter, self.accidental)

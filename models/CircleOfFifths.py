@@ -1,3 +1,5 @@
+from models.key import Key
+
 class CircleOfFifths:
     circle = ['B','E','A','D','G','C','F']
     pivot = circle.index('C')
@@ -14,9 +16,9 @@ class CircleOfFifths:
             if(note.letter != 'F'):
                 accidental += 1
         else:
-            num_accidentals = pivot - (position % len(circle)) - int((position / len(circle)))
+            num_accidentals = pivot - (position % len(circle)) - int(position / (len(circle)-1))
             key = ([0] * (len(circle) - num_accidentals)) + ([1] * num_accidentals)
-            if(position >= pivot):
+            if(position >= pivot and accidental > 0):
                 accidental-=1
         key = [x+accidental for x in key]
-        return key
+        return Key(key)
