@@ -1,6 +1,13 @@
 class Key:
-    def __init__(self, signature):
-        self.signature = signature
+    def __init__(self, signature, minor=0):
+        if minor == 0:      #major
+            self.signature = signature
+        elif minor == 1: #minor
+            pass
+        elif minor == 2: #harmonic minor
+            pass
+        elif minor == 3: #melodic minor
+            pass
 
     def has_note(self, note, circle):
         position = circle.index(note.letter)
